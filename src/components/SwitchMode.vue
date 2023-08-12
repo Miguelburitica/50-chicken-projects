@@ -3,23 +3,19 @@ import { BURI, CHICKEN } from '../constants/mode'
 import { capitalize } from '../utils/texts'
 import { useModeStore } from '../stores/modules/mode'
 import { storeToRefs } from 'pinia';
-import { computed, watch } from 'vue';
+import { watch } from 'vue';
 const store = useModeStore();
 const { mode, getMode } = storeToRefs(store)
 const { switchMode } = store
 let checked = mode === CHICKEN ? true : false
 
 watch(() => mode.value, (newValue, oldValue) => {
-  console.log('Mode has changed:', newValue, 'Previous value:', oldValue);
-  const switchButton = document.querySelector('#switch-mode-component');
-  switchButton?.click()
+  checked = newValue
 })
-
-
 </script>
 
 <template>
-  <div class="p-6 flex">
+  <div class="flex">
     <span class="mx-2">{{ capitalize(CHICKEN) }}</span>
     <label class="relative inline-flex items-center cursor-pointer">
       <input id="switch-mode-component" @change="switchMode" type="checkbox" :checked="checked" class="sr-only peer">

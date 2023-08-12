@@ -1,18 +1,13 @@
 <script setup>
-import SwitchMode from '../components/SwitchMode.vue'
+import { storeToRefs } from 'pinia';
 import { useModeStore } from '../stores/modules/mode'
+import CurrentChallenge from '../challengers/CurrentChallenge.vue';
 const store = useModeStore();
-const { switchMode } = store
+const { mode } = storeToRefs(store)
 </script>
 
 <template>
   <main>
-
-    <SwitchMode />
-    <button @click="switchMode" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
-      Change mode
-    </button>
-
-
+    <CurrentChallenge/>
   </main>
 </template>
