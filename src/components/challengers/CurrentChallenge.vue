@@ -39,16 +39,6 @@ export default {
 </script>
 
 <template>
-  <main>
-    <div v-if="loaded">
-      <h3>
-        {{ day }}
-        {{ mode }}
-        <component :is="currentComponent" />
-      </h3>
-    </div>
-    <div v-else>
-      <h3>loading..</h3>
-    </div>
-  </main>
+  <component v-if="loaded" :is="currentComponent" />
+  <h3 v-else>loading..</h3>
 </template>
