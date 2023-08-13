@@ -1,10 +1,15 @@
 <script>
-import { capitalize, defineAsyncComponent } from 'vue';
-import { useModeStore } from '../stores/modules/mode';
+import { defineAsyncComponent } from 'vue';
+import { useModeStore } from '@/stores/modules/mode';
 import { storeToRefs } from 'pinia';
-import NoChallenge404 from '../components/NoChallenge404.vue'
+import NoChallenge404 from '@/components/NoChallenge404.vue'
 
 export default {
+  data() {
+    return {
+      loaded: false,
+    };
+  },
   computed: {
     day() {
       return this.$route.params.day || '1'
@@ -12,7 +17,7 @@ export default {
     mode() {
       const store = useModeStore();
       const { mode } = storeToRefs(store);
-      return capitalize(mode.value) || 'Buri'
+      return mode.value || 'buri'
     },
     currentComponent() {
       const mode = this.mode;
@@ -25,17 +30,11 @@ export default {
         errorComponent: NoChallenge404,
         timeout: 30
       })
-
     },
   },
-  data() {
-    return {
-      loaded: false,
-    };
-  },
   mounted() {
-    this.loaded = true;
-  },
+    this.loaded = true
+  }
 };
 </script>
 

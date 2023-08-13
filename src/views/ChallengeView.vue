@@ -1,13 +1,23 @@
-<script setup>
-import { storeToRefs } from 'pinia';
-import { useModeStore } from '../stores/modules/mode'
-import CurrentChallenge from '../challengers/CurrentChallenge.vue';
-const store = useModeStore();
-const { mode } = storeToRefs(store)
-</script>
-
 <template>
   <main>
     <CurrentChallenge/>
   </main>
 </template>
+
+<script>
+import CurrentChallenge from '../components/challengers/CurrentChallenge.vue';
+import { useModeStore } from '../stores/modules/mode'
+
+const $store = useModeStore();
+
+export default {
+  name: 'ChallengeView',
+  components: {
+    CurrentChallenge
+  },
+  mounted() {
+    console.log({ lalala: $store.mode })
+  }
+}
+
+</script>
