@@ -26,9 +26,11 @@ export default {
       // this dynamically import handle the error/success case for challenges
       // we need to keep our guidelines clean
       return defineAsyncComponent({
-        loader: () => import(componentPath),
+        loader: () => import(componentPath)
+          .then((module) => module.default)
+          .catch(() => NoChallenge404),
         errorComponent: NoChallenge404,
-        timeout: 30
+        timeout: 1000
       })
     },
   },
