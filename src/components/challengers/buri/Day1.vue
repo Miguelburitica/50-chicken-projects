@@ -11,7 +11,7 @@
 <script>
 export default {
   name: 'Day1',
-  data() {
+  data () {
     return {
       currentCard: 'tatacoa',
       cards: [
