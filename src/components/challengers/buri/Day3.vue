@@ -9,20 +9,20 @@
     </svg>
   </div>
   <nav :class="lateralMenuClasses">
-    <li class="flex gap-3 items-center">
+    <li @click="redirectTo('/')" class="flex gap-3 items-center cursor-pointer">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
         <path d="M19.006 3.705a.75.75 0 00-.512-1.41L6 6.838V3a.75.75 0 00-.75-.75h-1.5A.75.75 0 003 3v4.93l-1.006.365a.75.75 0 00.512 1.41l16.5-6z" />
         <path fill-rule="evenodd" d="M3.019 11.115L18 5.667V9.09l4.006 1.456a.75.75 0 11-.512 1.41l-.494-.18v8.475h.75a.75.75 0 010 1.5H2.25a.75.75 0 010-1.5H3v-9.129l.019-.006zM18 20.25v-9.565l1.5.545v9.02H18zm-9-6a.75.75 0 00-.75.75v4.5c0 .414.336.75.75.75h3a.75.75 0 00.75-.75V15a.75.75 0 00-.75-.75H9z" clip-rule="evenodd" />
       </svg>
       HOME
     </li>
-    <li class="flex gap-3 items-center">
+    <li @click="redirectTo('https://www.linkedin.com/in/miguel-antonio-buritica-vargas/')" class="flex gap-3 items-center cursor-pointer">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
         <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" />
       </svg>
       ABOUT
     </li>
-    <li class="flex gap-3 items-center">
+    <li @click="redirectTo('https://github.com/Miguelburitica')" class="flex gap-3 items-center cursor-pointer">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
         <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
         <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
@@ -90,10 +90,12 @@ export default {
         'close-state': !this.open,
       }
       return classes
-    }
+    },
   },
-  mounted() {
-    //
+  methods: {
+    redirectTo(direction) {
+      window.open(direction, '_blank')
+    }
   }
 }
 </script>
