@@ -61,7 +61,7 @@ export default {
         'menu-roulette': true,
         'bg-cyan-900': true,
         'rounded-full': true,
-        'absolute': true,
+        'fixed': true,
         'z-10': true,
         'open-animation': this.open,
         'close-state': !this.open,
@@ -85,7 +85,6 @@ export default {
       const classes = {
         'content': true,
         'w-full': true,
-        'py-20': true,
         'bg-gray-950': true,
         'open-animation': this.open,
         'close-state': !this.open,
@@ -173,8 +172,19 @@ export default {
   transform: rotate(-15deg);
 }
 
+.content {
+  padding: 60px 0 40px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 160px 0 40px;
+  }    
+}
+
 .content > article {
-  width: 80ch;
+  max-width: 80ch;
+  width: 90%;
 }
 
 </style>
