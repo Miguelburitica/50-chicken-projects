@@ -31,7 +31,7 @@
     </li>
   </nav>
   <main :class="contentClasses">
-    <article class="mx-auto flex flex-col">
+    <article class="mx-auto flex flex-col w-11/12 max-w-prose">
       <h3 class="text-3xl font-semibold mb-2 font-serif">Capítulo LVI</h3>
       <small class=" text-gray-400 italic mb-4">
         <time datetime="1851-11-19">19/11/1851</time>
@@ -182,11 +182,6 @@ export default {
   .content {
     padding: 160px 0 40px;
   }    
-}
-
-.content > article {
-  max-width: 80ch;
-  width: 90%;
 }
 
 </style>
