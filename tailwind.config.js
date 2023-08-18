@@ -9,6 +9,7 @@ module.exports = {
         'cristales': 'url("/src/assets/challenges/caño_cristales.webp")',
         'peñol': 'url("/src/assets/challenges/piedra_peñol.webp")',
         'isla': 'url("/src/assets/challenges/san_andres_isla.webp")',
+        'mononoke': 'url("/src/assets/challenges/mononoke.webp")',
       }
     },
   },
