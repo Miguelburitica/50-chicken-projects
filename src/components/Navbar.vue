@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex py-2 justify-between px-2 bg-slate-900 relative z-50">
+  <nav class="flex py-2 justify-between px-2 bg-slate-900 fixed w-full z-50">
     <div class="flex items-center">
       <RouterLink class="px-2" to="/">Home</RouterLink> |
       <RouterLink class="px-2 mr-5" to="/challenge">Challenge</RouterLink>

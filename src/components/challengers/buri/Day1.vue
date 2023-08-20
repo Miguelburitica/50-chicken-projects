@@ -75,9 +75,10 @@ export default {
 <style scoped>
 .cards-container {
   display: flex;
-  height: 100%;
+  height: 100vh;
   width: 90vw;
-  padding: 40px 10px 0;
+  align-items: center;
+  justify-content: center;
   gap: 20px;
   margin: 0 auto;
 
