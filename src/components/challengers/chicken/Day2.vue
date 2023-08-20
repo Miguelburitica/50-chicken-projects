@@ -1,35 +1,136 @@
 <template>
-  <main>
-    <h1>Title</h1>
-    <div>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, repellendus perferendis? Asperiores impedit
-        quaerat, ad dolores ullam pariatur blanditiis beatae tempora? Inventore officiis alias ab nobis illum odio,
-        exercitationem ex.
-      </p>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto eius id ipsum, saepe magnam odit praesentium
-        voluptate nemo exercitationem dolorem dicta? Eaque, recusandae sequi dignissimos nihil voluptatem at quisquam
-        explicabo.
-        Temporibus omnis aut expedita. Veritatis labore velit quo, facere nobis temporibus excepturi illum harum
-        distinctio at deleniti autem laboriosam quia accusamus similique? Alias nisi porro soluta aliquam error illo modi.
-        Voluptatibus maiores animi explicabo quia deleniti saepe, fuga error nihil alias laboriosam. Modi, harum delectus
-        inventore recusandae non voluptates unde quos, obcaecati quisquam accusamus aut laudantium, similique esse
-        cupiditate adipisci?
-        Quo quisquam iusto voluptate eius! Accusamus quae optio, reprehenderit sequi neque, minus, possimus rerum autem
-        quasi fugit itaque quo. Maxime asperiores eum dolorem minus tempora fugit distinctio provident omnis soluta?
-        Ut unde necessitatibus porro iusto ad commodi velit sint repellendus totam labore placeat dolorum iure esse
-        corrupti ipsam tempora nisi, cum dolores consequatur. Ipsa pariatur eius, optio facilis dolore aliquid?
-      Molestiae ab voluptas, iusto rem soluta animi aspernatur, dolores eveniet enim temporibus harum iure tempore illum
-      maiores consequuntur accusamus nulla omnis. Autem ipsam qui est nobis provident optio iure repellat?
-      Ipsa, perferendis animi enim cum, iure veniam natus reprehenderit quod odio beatae debitis aliquam voluptas modi
-      sequi laudantium optio rerum. Vitae debitis quibusdam consequatur voluptates officiis, nesciunt minus voluptatum
-      temporibus!
-      Quia pariatur rerum suscipit illum cupiditate ipsa veniam ab nisi. Sapiente reprehenderit ipsa asperiores ad
-      accusantium in. Quo voluptatibus optio dignissimos eveniet. Nemo, neque! Deserunt eum odio dolorem sit inventore!
-      Voluptatem, dolorem illo totam porro omnis quisquam itaque delectus facilis iusto ab sint cumque inventore sit
-      illum voluptate at saepe animi commodi esse impedit. Minima officiis laudantium eaque odio sapiente?
-      Consequatur natus, nisi amet quidem dolorem sapiente expedita ut doloremque libero voluptatum rem autem adipisci,
-      ex aspernatur qui, sit dicta necessitatibus assumenda culpa atque esse incidunt? Repellat distinctio tempora
-      accusantium.</p>
-  </div>
-</main></template>
+  <CenteredContainer>
+    <main class="flex flex-col">
+      <div class="flex items-center justify-center gap-11">
+        <div class="flex items-center cursor-pointer" @click="setCurrentStep(item)" v-for="(item, index) in steps"
+          :key="index">
+          <div class="step-counter" :class="stepsDone.includes(item.id) ? 'step-complete' : ''">
+            <div v-if="stepsDone.includes(item.id)">
+              <IconCheck color="#2FC2A9" />
+            </div>
+            <div v-else>
+              {{ item.id }}
+            </div>
+          </div>
+          <div class="ml-3 flex items-center">
+            <div>
+              <h3>{{ item.title }}</h3>
+              <span class="text-sm text-gray-400">{{ item.content }}</span>
+            </div>
+            <IconChevronsRight class="ml-4" :color="stepsDone.includes(item.id) ? '#2FC2A9' : 'white'"
+              :style="item.id === steps.length ? 'visibility: hidden' : ''" />
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-between my-4 items-center">
+        <button @click="prevStep" class="btn-navigation rounded-md px-3">Previous</button>
+        <button @click="nextStep" class="btn-navigation rounded-md px-3">Next</button>
+      </div>
+    </main>
+  </CenteredContainer>
+</template>
+
+<script>
+import CenteredContainer from '../../CenteredContainer.vue';
+import { IconChevronsRight, IconCheck } from '@tabler/icons-vue'
+
+export default {
+  name: 'Day2',
+  components: {
+    CenteredContainer,
+    IconChevronsRight,
+    IconCheck
+  },
+  mounted() {
+    console.log(this.steps);
+  },
+  data() {
+    let steps = [
+      {
+        title: 'Step 1',
+        content: 'Content for step'
+      },
+      {
+        title: 'Step 2',
+        content: 'Add more content'
+      },
+      {
+        title: 'Step 3',
+        content: 'Are you sure of this?'
+      },
+      {
+        title: 'Step 4',
+        content: 'More information'
+      },
+      {
+        title: 'Step 5',
+        content: 'add all the steppers you need'
+      },
+
+    ]
+    steps = steps.map((step, i) => {
+      return {
+        ...step,
+        id: i + 1
+      }
+    })
+    return {
+      steps,
+      currentStep: steps[0],
+      stepsDone: []
+    }
+  },
+  methods: {
+    setCurrentStep(newItem) {
+      let newStepsDone = [];
+      for (let i = 0; i < newItem.id; i++) {
+        newStepsDone.push(i)
+      }
+      this.stepsDone = newStepsDone
+      this.currentStep = newItem.id
+    },
+    prevStep() {
+      this.stepsDone != [] ? this.stepsDone?.pop() : null
+    },
+    nextStep() {
+      this.stepsDone.length !== this.steps.length
+        ? this.stepsDone.push(this.stepsDone.length + 1)
+        : null
+    }
+  }
+}
+</script>
+
+<style scoped>
+* {
+  transition: .5s all;
+}
+
+h3 {
+  font-size: clamp(.75rem, 1vw, 1.2vw);
+}
+
+.step-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  outline: 2px solid #2FC2A9;
+  width: clamp(15px, 25px, 30px);
+  height: clamp(15px, 25px, 30px);
+}
+
+.step-complete {
+  background-color: rgb(36, 84, 68);
+}
+
+.btn-navigation {
+  background-color: rgb(36, 84, 68);
+  font-size: clamp(1rem, 1.5vw, 1.7vw);
+  font-weight: 900;
+}
+
+.btn-navigation:hover {
+  background-color: #2FC2A9;
+}
+</style>
