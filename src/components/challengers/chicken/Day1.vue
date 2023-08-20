@@ -1,17 +1,15 @@
 <template>
-  <main>
-    <h1>
-      <h1 class="w-full m-auto text-center font-bold text-2xl py-4">Collapsable Cards</h1>
-      <div class="flex items-center justify-between gap-5 mx-3 overflow-x-auto">
-        <div v-for="(item, index) in cities" :key="index">
-          <img @click="setCurrentCity(item)" class="rounded-xl"
-            :class="item.id === currentImage.id ? 'current-image-container' : 'image-container'" :src="item.image"
-            :alt="item.name">
-          <h4 :class="item.id === currentImage.id ? 'text-appear' : ''" class="custom-text">
-            {{ item.name }}</h4>
-        </div>
+  <main class="py-10">
+    <h1 class="w-full m-auto text-center font-bold text-2xl py-4">Collapsable Cards</h1>
+    <div class="flex items-center justify-between gap-5 mx-3 overflow-x-auto">
+      <div v-for="(item, index) in cities" :key="index">
+        <img @click="setCurrentCity(item)" class="rounded-xl"
+          :class="item.id === currentImage.id ? 'current-image-container' : 'image-container'" :src="item.image"
+          :alt="item.name">
+        <h4 :class="item.id === currentImage.id ? 'text-appear' : ''" class="custom-text">
+          {{ item.name }}</h4>
       </div>
-    </h1>
+    </div>
   </main>
 </template>
 
