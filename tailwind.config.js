@@ -4,12 +4,14 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'tatacoa': 'url("/src/assets/challenges/desierto_tatacoa.webp")',
-        'colon': 'url("/src/assets/challenges/pico_colon.webp")',
-        'cristales': 'url("/src/assets/challenges/caño_cristales.webp")',
-        'peñol': 'url("/src/assets/challenges/piedra_peñol.webp")',
-        'isla': 'url("/src/assets/challenges/san_andres_isla.webp")',
-        'mononoke': 'url("/src/assets/challenges/mononoke.webp")',
+        'tatacoa': 'url("/src/assets/challenges/buri/desierto_tatacoa.webp")',
+        'colon': 'url("/src/assets/challenges/buri/pico_colon.webp")',
+        'cristales': 'url("/src/assets/challenges/buri/caño_cristales.webp")',
+        'peñol': 'url("/src/assets/challenges/buri/piedra_peñol.webp")',
+        'isla': 'url("/src/assets/challenges/buri/san_andres_isla.webp")',
+        'mononoke': 'url("/src/assets/challenges/buri/mononoke.webp")',
+        'piracy_flag': 'url("/src/assets/challenges/buri/piracy_flag.webp")',
+        'original': 'url("/src/assets/challenges/buri/original.webp")',
       }
     },
   },
