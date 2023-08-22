@@ -4,6 +4,7 @@
       <h1 class="text-8xl font-extrabold text-center py-10">Scroll</h1>
       <IconArrowDown size="100" class="scroll-animate" />
     </div>
+    <p class="text-center text-2xl">infinite scroll!</p>
     <section class="flex flex-col justify-center items-center">
       <div class="text-3xl font-extrabold container rounded-lg p-4 flex items-center justify-center my-4"
         v-for="(_item, index) in containers" :key="index" :class="index % 2 ? 'left' : 'right'">
